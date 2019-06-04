@@ -1,0 +1,106 @@
+<div id="leaflet-map-%{id}" class="leaflet-map"></div>
+<script>
+(() => {
+// Specify configuration variables, setup any elements and styling
+    var leafletCdn = "https://unpkg.com/leaflet@1.5.1/dist/";
+    var esriLeafletCdn = "https://unpkg.com/esri-leaflet/dist/";
+
+    // Get tag input arguments & inside block object list
+    var tagInputArg = %{tag_input_arg_json};
+    var leaflet_item_jsons = [%{inside_block_leaflet_objects}];
+
+    // Override the map div id if specified, apply default CSS
+    var defaultMapElId = "leaflet-map-%{id}";
+    var defaultMapElStyle = "height:300px; margin:15px";
+    var mapEl = document.getElementById(defaultMapElId);
+    if('div_id' in tagInputArg){
+        mapEl.id = tagInputArg['div_id'];
+    }
+    var defaultMapCssEl = document.createElement("style");
+    defaultMapCssEl.innerHTML = 
+        "#" + defaultMapElId + "{" + defaultMapElStyle + "}";
+    document.head.appendChild(defaultMapCssEl);
+
+// Actual mapping section; Specify a function to be called later that 
+// assembles the correct JS components based on what the user specified in the 
+// tag input arg, the block section of features, etc. Actually creates the map
+// that is visible on the page
+ 
+    function createMap(){
+        console.log("Creating map %{id}..");
+        var map = L.map(mapEl.id).setView([0,0], 3);
+        L.tileLayer.provider("OpenStreetMap.Mapnik").addTo(map);
+        for(var i=0; i<leaflet_item_jsons.length; i++){
+            var leaflet_item = leaflet_item_jsons[i];
+            console.log("Leaflet item #" + i);
+            console.log(leaflet_item);
+        }
+    }
+
+
+// Load the correct JS libraries/CSS by adding to head: 
+// When ready, call createMap() to create the map on the page
+
+    function _createMap(){
+        // helper function to draw the map only when everything is loaded,
+        // safeguards against multiple calls to window.onload
+        var prevOnLoad;
+        if(window.onload){
+            prevOnLoad = window.onload;
+        }
+        window.onload = () => {
+            createMap();
+            if(prevOnLoad){
+                prevOnLoad();
+            }
+        }
+    }
+
+    var leafletCssId = "leaflet-css-head";
+    var leafletJsId = "leaflet-js-head";
+    var esriLeafletJsId = "esri-leaflet-js-head";
+    var leafletProvidersJsId = "leaflet-providers-js-head";
+
+    // Add the leaflet CSS first, don't worry about when it loads
+    var leafletCssEl = document.createElement("link");
+    leafletCssEl.id = leafletCssId;
+    leafletCssEl.rel = "stylesheet";
+    leafletCssEl.href = leafletCdn + "leaflet.css";
+    if(!document.getElementById(leafletCssEl.id)){
+        document.head.appendChild(leafletCssEl);
+    }
+
+    function addToHeadIfNotLoaded(el) {
+        //Add the el to the head if it doesn't exist already. If it does,
+        //everything we need is already loaded, so draw the map
+        if(!document.getElementById(el.id)){
+            document.head.appendChild(el);
+        } else {
+            _createMap();
+        }
+    }
+
+    // Load the main leaflet.js code, wait for it to load
+    var leafletJsEl = document.createElement("script");
+    leafletJsEl.id = leafletJsId;
+    leafletJsEl.onload = () => {
+        //After loaded, load the esri-leaflet.js code, wait for it to load
+        var esriEl = document.createElement("script");
+        esriEl.id = esriLeafletJsId;
+        esriEl.onload = () => {
+            //After loaded, add the inline leaflet-providers <script>
+            provEl = document.createElement("script");
+            provEl.id = leafletProvidersJsId;
+            provEl.innerHTML = `%{leaflet_providers_js_content}`;
+            if(!document.getElementById(provEl.id)){
+                 document.head.appendChild(provEl);        
+            }
+            _createMap();
+            }
+        esriEl.src = esriLeafletCdn + "esri-leaflet.js";
+        addToHeadIfNotLoaded(esriEl);
+        };
+    leafletJsEl.src = leafletCdn + "leaflet.js";
+    addToHeadIfNotLoaded(leafletJsEl);
+})();
+</script>
