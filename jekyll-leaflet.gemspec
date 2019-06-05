@@ -6,10 +6,11 @@ Gem::Specification.new do |s|
   s.description = "Embed leatlet.js maps in Jekyll"
   s.summary     = "Embed leatlet.js maps in Jekyll"
   s.email       = "davidjosephvitale@gmail.com"
-  s.files       = ["lib/jekyll-leaflet.rb", 
-                   "lib/leaflet-map.html", 
-                   "lib/leaflet-marker.rb",
-                   "lib/leaflet-providers.js"]
+  s.files       = ["lib/jekyll-leaflet.rb",
+                   "lib/jekyll-leaflet/leaflet-map.rb", 
+                   "lib/jekyll-leaflet/leaflet-map.html", 
+                   "lib/jekyll-leaflet/leaflet-marker.rb",
+                   "lib/jekyll-leaflet/leaflet-providers.js"]
   s.homepage    = "https://davidjvitale.com/tech/jekyll-leaflet/"
   s.license     = "MIT"
 end
