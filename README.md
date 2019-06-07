@@ -12,4 +12,4 @@ Embed leatlet.js maps in Jekyll. As simple as:
 {% endleaflet_map %}
 ```
 
-[](./docs/assets/screenshot.png)
+![](./docs/assets/screenshot.png)
