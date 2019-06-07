@@ -1,4 +1,3 @@
-require 'rake'
 Gem::Specification.new do |s|
   s.name        = "jekyll-leaflet"
   s.version     = "0.1.0"
@@ -7,7 +6,7 @@ Gem::Specification.new do |s|
   s.description = "Embed leatlet.js maps in Jekyll"
   s.summary     = "Embed leatlet.js maps in Jekyll"
   s.email       = "davidjosephvitale@gmail.com"
-  s.files       = FileList["lib/**/*"].to_a
+  s.files       = Dir.glob("lib/**/*")
   s.homepage    = "https://davidjvitale.com/tech/jekyll-leaflet/"
   s.license     = "MIT"
 end
