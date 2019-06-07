@@ -33,7 +33,7 @@ You are now ready to make a map! In any post or page, use the `leaflet_map` Liqu
     {}
 {% endleaflet_map %}
 
-This tag block takes in 1 positional argument, a JSON object. This object can specify a `[lat,long]` center, the `zoom`, a `providerBasemap`, and more.
+This tag block takes in 1 positional argument, a JSON object. This object can specify a `[lat,long]` center, the `zoom`, a `providerBasemap` (Preview a basemap and pick a "Provider name" from [here](http://leaflet-extras.github.io/leaflet-providers/preview/index.html)), etc.
 
 {% raw %}
 ```liquid
@@ -55,6 +55,7 @@ You can place any number of "leafet items" inbetween the `leaflet_map` tag block
 
 {% raw %}
 ```liquid
+
 {% leaflet_map {"zoom" : 4 } %}
 
     {% leaflet_marker { "latitude" : 48.7596,
@@ -73,6 +74,8 @@ You can place any number of "leafet items" inbetween the `leaflet_map` tag block
                 [-96.58,  45.94],
                 [-104.03, 45.94],
                 [-104.05, 48.99] ]] } } %}
+
+{% endleaflet_map %}
 
 ```
 {% endraw %}
@@ -98,7 +101,7 @@ You can place any number of "leafet items" inbetween the `leaflet_map` tag block
 
 {% endleaflet_map %}
 
-The true power of `jekyll-leaflet` is unlocked when you connect the previous concepts with programatic control flow with Liquid. Let's say you have some [sample posts](/samples/sample-post-1/) that are tagged with location information in the front matter like this:
+The true power of `jekyll-leaflet` is unlocked when you connect the previous concepts with programatic control flow with Liquid. Let's say you have some [sample posts]({{site.baseurl}}samples/sample-post-1/) that are tagged with location information in the front matter like this:
 
 ```yaml
 layout: post
@@ -115,12 +118,13 @@ location:
 permalink: /samples/sample-post-1/
 ```
 
-You could cycle through all posts in your site via {% raw %}`{% for post in site.posts %}`{% endraw %} inside of the `leaflet_map` block, assigning each `post.location.geojson` to a {%raw%}`{% leaflet_geojson %}`{%endraw%} leaflet item. __This would ggive you a dynamic, always up-to-date map of your posts and there locations__. We have some sample posts set up, so running the following code will generate such a map:
+You could cycle through all posts in your site via {% raw %}`{% for post in site.posts %}`{% endraw %} inside of the `leaflet_map` block, assigning each `post.location.geojson` to a {%raw%}`{% leaflet_geojson %}`{%endraw%} leaflet item. __This would give you a dynamic, always up-to-date map of your posts and their locations__. We have some sample posts set up, so running the following code will generate such a map:
 
 {% raw %}
 ```liquid
 {% leaflet_map { "zoom" : 4,
-                 "center" : [50, -114]} %}
+                 "center" : [50, -114],
+                 "providerBasemap" : "OpenStreetMap.HOT"} %}
     {%- for post in site.posts -%}
         {% assign geojson = post.location.geojson %}
         {% if geojson %}
@@ -133,7 +137,8 @@ You could cycle through all posts in your site via {% raw %}`{% for post in site
 {% endraw %}
 
 {% leaflet_map {"zoom" : 4,
-                "center" : [50, -114]} %}
+                "center" : [50, -114],
+                "providerBasemap": "OpenStreetMap.HOT"} %}
     {%- for post in site.posts -%}
         {% assign geojson = post.location.geojson %}
         {% if geojson %}
@@ -142,5 +147,5 @@ You could cycle through all posts in your site via {% raw %}`{% for post in site
     {% endfor %}
 {% endleaflet_map %}
 
-This documentation that you are reading is [generated in Jekyll](https://github.com/DavidJVitale/jekyll-leaflet/tree/master/doc) using the `jekyll-leaflet` plugin. You can clone the repository, build the site locally, and modify everything you are reading.
+This documentation that you are reading is [generated in Jekyll](https://github.com/DavidJVitale/jekyll-leaflet/tree/master/docs) using the `jekyll-leaflet` plugin. You can clone the repository, build the site locally, and modify everything you are reading.
 

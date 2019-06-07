@@ -9,11 +9,13 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Create leaflet.js maps in Jekyll" />
 <meta property="og:description" content="Create leaflet.js maps in Jekyll" />
+<link rel="canonical" href="http://localhost:4000/tech/jekyll-leaflet/getting-started/" />
+<meta property="og:url" content="http://localhost:4000/tech/jekyll-leaflet/getting-started/" />
 <meta property="og:site_name" content="jekyll-leaflet" />
 <script type="application/ld+json">
-{"@type":"WebPage","url":"/tech/jekyll-leaflet/getting-started/","headline":"jekyll-leaflet","description":"Create leaflet.js maps in Jekyll","@context":"https://schema.org"}</script>
+{"url":"http://localhost:4000/tech/jekyll-leaflet/getting-started/","headline":"jekyll-leaflet","description":"Create leaflet.js maps in Jekyll","@type":"WebPage","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/tech/jekyll-leaflet/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/tech/jekyll-leaflet/feed.xml" title="jekyll-leaflet" /></head>
+<link rel="stylesheet" href="/tech/jekyll-leaflet/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/tech/jekyll-leaflet/feed.xml" title="jekyll-leaflet" /></head>
 <body><header class="site-header" role="banner">
 
   <div class="wrapper"><div class="header-icon-title-container">
@@ -68,7 +70,7 @@
 <span class="p">{%</span><span class="w"> </span><span class="nt">endleaflet_map</span><span class="w"> </span><span class="p">%}</span>
 </code></pre></div></div>
 
-<div id="leaflet-map-287344f65710273e3590ee1a06b36ea1" class="leaflet-map"></div>
+<div id="leaflet-map-25194022ce6d87db647c4478dda742b9" class="leaflet-map"></div>
 <script>
 (() => {
 // Specify configuration variables, setup any elements and styling
@@ -82,7 +84,7 @@
 ];
 
     // Override the map div id if specified, apply default CSS
-    var defaultMapElId = "leaflet-map-287344f65710273e3590ee1a06b36ea1";
+    var defaultMapElId = "leaflet-map-25194022ce6d87db647c4478dda742b9";
    var defaultMapElStyle = "height:300px; margin-top:15px; margin-bottom:15px";
     var mapEl = document.getElementById(defaultMapElId);
     if('divId' in tagInputArg){
@@ -181,7 +183,7 @@
 
 //The actual section that is called that creates a map
     function createMap(){
-        console.log("Creating map 287344f65710273e3590ee1a06b36ea1 with these args:");
+        console.log("Creating map 25194022ce6d87db647c4478dda742b9 with these args:");
         console.log(tagInputArg);
 
         //Initialize Map with the correct input arguments
@@ -1082,7 +1084,7 @@
 })();
 </script>
 
-<p>This tag block takes in 1 positional argument, a JSON object. This object can specify a <code class="highlighter-rouge">[lat,long]</code> center, the <code class="highlighter-rouge">zoom</code>, a <code class="highlighter-rouge">providerBasemap</code>, and more.</p>
+<p>This tag block takes in 1 positional argument, a JSON object. This object can specify a <code class="highlighter-rouge">[lat,long]</code> center, the <code class="highlighter-rouge">zoom</code>, a <code class="highlighter-rouge">providerBasemap</code> (Preview a basemap and pick a “Provider name” from <a href="http://leaflet-extras.github.io/leaflet-providers/preview/index.html">here</a>), etc.</p>
 
 <div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">leaflet_map</span><span class="w"> </span>{<span class="w"> </span><span class="s2">"center"</span><span class="w"> </span>:<span class="w"> </span>[<span class="mf">63.0694</span><span class="p">,</span><span class="w">  </span>-<span class="mf">151.0074</span>]<span class="p">,</span><span class="err">
 </span><span class="w">                 </span><span class="s2">"zoom"</span><span class="w"> </span>:<span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="err">
@@ -1091,7 +1093,7 @@
 <span class="p">{%</span><span class="w"> </span><span class="nt">endleaflet_map</span><span class="w"> </span><span class="p">%}</span>
 </code></pre></div></div>
 
-<div id="leaflet-map-a316a85f2bf8007ff41116a6aa34b71e" class="leaflet-map"></div>
+<div id="leaflet-map-c2ee1701ddb2f6584c84857c911c0af2" class="leaflet-map"></div>
 <script>
 (() => {
 // Specify configuration variables, setup any elements and styling
@@ -1107,7 +1109,7 @@
 ];
 
     // Override the map div id if specified, apply default CSS
-    var defaultMapElId = "leaflet-map-a316a85f2bf8007ff41116a6aa34b71e";
+    var defaultMapElId = "leaflet-map-c2ee1701ddb2f6584c84857c911c0af2";
    var defaultMapElStyle = "height:300px; margin-top:15px; margin-bottom:15px";
     var mapEl = document.getElementById(defaultMapElId);
     if('divId' in tagInputArg){
@@ -1206,7 +1208,7 @@
 
 //The actual section that is called that creates a map
     function createMap(){
-        console.log("Creating map a316a85f2bf8007ff41116a6aa34b71e with these args:");
+        console.log("Creating map c2ee1701ddb2f6584c84857c911c0af2 with these args:");
         console.log(tagInputArg);
 
         //Initialize Map with the correct input arguments
@@ -2109,7 +2111,8 @@
 
 <p>You can place any number of “leafet items” inbetween the <code class="highlighter-rouge">leaflet_map</code> tag blocks. At minimum, there must at least be an empty object <code class="highlighter-rouge">{}</code> in between the tag blocks, or else the map won’t draw at all. Leaflet items include markers, geometries, geojson, features, popups, etc. Each leaflet item tag also takes in a single JSON object positional argument. In this example, we will be drawing 1 marker and 1 Polygon on a map.</p>
 
-<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">leaflet_map</span><span class="w"> </span><span class="na">{"zoom"</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span>}<span class="w"> </span><span class="p">%}</span>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="p">{%</span><span class="w"> </span><span class="nt">leaflet_map</span><span class="w"> </span><span class="na">{"zoom"</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span>}<span class="w"> </span><span class="p">%}</span>
 
     <span class="p">{%</span><span class="w"> </span><span class="nt">leaflet_marker</span><span class="w"> </span>{<span class="w"> </span><span class="s2">"latitude"</span><span class="w"> </span>:<span class="w"> </span><span class="mf">48.7596</span><span class="p">,</span><span class="err">
 </span><span class="w">                       </span><span class="s2">"longitude"</span><span class="w"> </span>:<span class="w"> </span>-<span class="mf">113.787</span><span class="p">,</span><span class="err">
@@ -2128,9 +2131,11 @@
 </span><span class="w">                </span>[-<span class="mf">104.03</span><span class="p">,</span><span class="w"> </span><span class="mf">45.94</span>]<span class="p">,</span><span class="err">
 </span><span class="w">                </span>[-<span class="mf">104.05</span><span class="p">,</span><span class="w"> </span><span class="mf">48.99</span>]<span class="w"> </span>]]<span class="w"> </span>}<span class="w"> </span>}<span class="w"> </span><span class="p">%}</span>
 
+<span class="p">{%</span><span class="w"> </span><span class="nt">endleaflet_map</span><span class="w"> </span><span class="p">%}</span>
+
 </code></pre></div></div>
 
-<div id="leaflet-map-e48e75b3e2973172138aca1858831c7c" class="leaflet-map"></div>
+<div id="leaflet-map-d3d7bfcc2e3a81d355f63d3ab8aabddf" class="leaflet-map"></div>
 <script>
 (() => {
 // Specify configuration variables, setup any elements and styling
@@ -2141,13 +2146,13 @@
     var tagInputArg = {"zoom" : 4 } ;
     var blockLeafletItems = [
 
-    {id: "09ca9de8b31303a3f3d0784e721c0700",
+    {id: "fead875cb6e381735d16f2e8b87dfa31",
               type: "LeafletMarker",
               value: { "latitude" : 48.7596,
                        "longitude" : -113.787,
                        "popupContent" : "Glacier National Park, Montana"} },
 
-    {id: "6bc52578c2baf3b2485224c3c4537eeb",
+    {id: "513ef38f947261fc7af82932635c5ebf",
               type: "LeafletGeoJSON",
               value: {
         "type": "Feature",
@@ -2165,7 +2170,7 @@
 ];
 
     // Override the map div id if specified, apply default CSS
-    var defaultMapElId = "leaflet-map-e48e75b3e2973172138aca1858831c7c";
+    var defaultMapElId = "leaflet-map-d3d7bfcc2e3a81d355f63d3ab8aabddf";
    var defaultMapElStyle = "height:300px; margin-top:15px; margin-bottom:15px";
     var mapEl = document.getElementById(defaultMapElId);
     if('divId' in tagInputArg){
@@ -2264,7 +2269,7 @@
 
 //The actual section that is called that creates a map
     function createMap(){
-        console.log("Creating map e48e75b3e2973172138aca1858831c7c with these args:");
+        console.log("Creating map d3d7bfcc2e3a81d355f63d3ab8aabddf with these args:");
         console.log(tagInputArg);
 
         //Initialize Map with the correct input arguments
@@ -3165,7 +3170,7 @@
 })();
 </script>
 
-<p>The true power of <code class="highlighter-rouge">jekyll-leaflet</code> is unlocked when you connect the previous concepts with programatic control flow with Liquid. Let’s say you have some <a href="/samples/sample-post-1/">sample posts</a> that are tagged with location information in the front matter like this:</p>
+<p>The true power of <code class="highlighter-rouge">jekyll-leaflet</code> is unlocked when you connect the previous concepts with programatic control flow with Liquid. Let’s say you have some <a href="/tech/jekyll-leaflet/samples/sample-post-1/">sample posts</a> that are tagged with location information in the front matter like this:</p>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">layout</span><span class="pi">:</span> <span class="s">post</span>
 <span class="na">title</span><span class="pi">:</span> <span class="s">Sample Post 1</span>
@@ -3181,10 +3186,11 @@
 <span class="na">permalink</span><span class="pi">:</span> <span class="s">/samples/sample-post-1/</span>
 </code></pre></div></div>
 
-<p>You could cycle through all posts in your site via <code class="highlighter-rouge">{% for post in site.posts %}</code> inside of the <code class="highlighter-rouge">leaflet_map</code> block, assigning each <code class="highlighter-rouge">post.location.geojson</code> to a <code class="highlighter-rouge">{% leaflet_geojson %}</code> leaflet item. <strong>This would ggive you a dynamic, always up-to-date map of your posts and there locations</strong>. We have some sample posts set up, so running the following code will generate such a map:</p>
+<p>You could cycle through all posts in your site via <code class="highlighter-rouge">{% for post in site.posts %}</code> inside of the <code class="highlighter-rouge">leaflet_map</code> block, assigning each <code class="highlighter-rouge">post.location.geojson</code> to a <code class="highlighter-rouge">{% leaflet_geojson %}</code> leaflet item. <strong>This would give you a dynamic, always up-to-date map of your posts and their locations</strong>. We have some sample posts set up, so running the following code will generate such a map:</p>
 
 <div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">leaflet_map</span><span class="w"> </span>{<span class="w"> </span><span class="s2">"zoom"</span><span class="w"> </span>:<span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="err">
-</span><span class="w">                 </span><span class="s2">"center"</span><span class="w"> </span>:<span class="w"> </span>[<span class="mi">50</span><span class="p">,</span><span class="w"> </span>-<span class="mi">114</span>]}<span class="w"> </span><span class="p">%}</span>
+</span><span class="w">                 </span><span class="s2">"center"</span><span class="w"> </span>:<span class="w"> </span>[<span class="mi">50</span><span class="p">,</span><span class="w"> </span>-<span class="mi">114</span>]<span class="p">,</span><span class="err">
+</span><span class="w">                 </span><span class="s2">"providerBasemap"</span><span class="w"> </span>:<span class="w"> </span><span class="s2">"OpenStreetMap.HOT"</span>}<span class="w"> </span><span class="p">%}</span>
     <span class="p">{%</span><span class="nt">-</span><span class="w"> </span>for<span class="w"> </span>post<span class="w"> </span>in<span class="w"> </span>site.posts<span class="w"> </span>-<span class="p">%}</span>
         <span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">geojson</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">post</span><span class="p">.</span><span class="nv">location</span><span class="p">.</span><span class="nv">geojson</span><span class="w"> </span><span class="p">%}</span>
         <span class="p">{%</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">geojson</span><span class="w"> </span><span class="p">%}</span>
@@ -3195,7 +3201,7 @@
         
 </code></pre></div></div>
 
-<div id="leaflet-map-337b40dd00d61fe1b848f53a5ad6242a" class="leaflet-map"></div>
+<div id="leaflet-map-3cf5f92197d19358376afa70a275a5d1" class="leaflet-map"></div>
 <script>
 (() => {
 // Specify configuration variables, setup any elements and styling
@@ -3204,22 +3210,23 @@
 
     // Get tag input arguments & inside block object list
     var tagInputArg = {"zoom" : 4,
-                "center" : [50, -114]} ;
+                "center" : [50, -114],
+                "providerBasemap": "OpenStreetMap.HOT"} ;
     var blockLeafletItems = [
         
-            {id: "5b284e1fe29c1d552dd91ce42731a9f7",
+            {id: "f09ee9e739894af6fa43c577d427d29f",
               type: "LeafletGeoJSON",
               value: { "type": "Feature", "properties": {"popupContent": "Strathcona Provincial Park", "href" : "/tech/jekyll-leaflet/samples/sample-post-3/"}, "geometry": { "type": "Point", "coordinates": [-125.598810, 49.814399] } }},
         
     
         
-            {id: "6e0ec02503b5ae9f3a0275877af2e3f5",
+            {id: "7d4bb725640da131edccf9b27acb53d6",
               type: "LeafletGeoJSON",
               value: { "type": "Feature", "properties": {"popupContent": "Yellowstone National Park", "href": "/tech/jekyll-leaflet/samples/sample-post-2/"}, "geometry": { "type": "Point", "coordinates": [-110.723183, 44.412266] } }},
         
     
         
-            {id: "a16397d7c1af06dd7aec658667a01be1",
+            {id: "2107d4426ba0ee1f5e4016869578228b",
               type: "LeafletGeoJSON",
               value: { "type": "Feature", "properties": {"popupContent": "Banff National Park", "href":"/tech/jekyll-leaflet/samples/sample-post-1/"}, "geometry": { "type": "Point", "coordinates": [-115.928160, 51.495437] } }},
         
@@ -3227,7 +3234,7 @@
 ];
 
     // Override the map div id if specified, apply default CSS
-    var defaultMapElId = "leaflet-map-337b40dd00d61fe1b848f53a5ad6242a";
+    var defaultMapElId = "leaflet-map-3cf5f92197d19358376afa70a275a5d1";
    var defaultMapElStyle = "height:300px; margin-top:15px; margin-bottom:15px";
     var mapEl = document.getElementById(defaultMapElId);
     if('divId' in tagInputArg){
@@ -3326,7 +3333,7 @@
 
 //The actual section that is called that creates a map
     function createMap(){
-        console.log("Creating map 337b40dd00d61fe1b848f53a5ad6242a with these args:");
+        console.log("Creating map 3cf5f92197d19358376afa70a275a5d1 with these args:");
         console.log(tagInputArg);
 
         //Initialize Map with the correct input arguments
@@ -4227,7 +4234,7 @@
 })();
 </script>
 
-<p>This documentation that you are reading is <a href="https://github.com/DavidJVitale/jekyll-leaflet/tree/master/doc">generated in Jekyll</a> using the <code class="highlighter-rouge">jekyll-leaflet</code> plugin. You can clone the repository, build the site locally, and modify everything you are reading.</p>
+<p>This documentation that you are reading is <a href="https://github.com/DavidJVitale/jekyll-leaflet/tree/master/docs">generated in Jekyll</a> using the <code class="highlighter-rouge">jekyll-leaflet</code> plugin. You can clone the repository, build the site locally, and modify everything you are reading.</p>
 
 
   </div>
