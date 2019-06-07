@@ -5,7 +5,7 @@ location:
     geojson: '{
         "type": "Feature",
         "properties": {"popupContent": "Strathcona Provincial Park",
-                       "href" : "/samples/sample-post-3/"},
+                       "href" : "/tech/jekyll-leaflet/samples/sample-post-3/"},
         "geometry": {
             "type": "Point",
             "coordinates":

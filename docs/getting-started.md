@@ -142,4 +142,4 @@ You could cycle through all posts in your site via {% raw %}`{% for post in site
     {% endfor %}
 {% endleaflet_map %}
 
-Now that you know how to create a map and add items to it, head over to the [Samples](/samples/) section to see some awesome use cases (tagging posts with a location, aggregating certain posts and displaying them on a map, etc.). You can also check out the [API Reference](/api-ref/) and the [Github repository](https://github.com/DavidJVitale/jekyll-leaflet).
+Now that you know how to create a map and add items to it, head over to the [Samples]({{site.baseurl}}samples/) section to see some awesome use cases (tagging posts with a location, aggregating certain posts and displaying them on a map, etc.). You can also check out the [API Reference]({{site.baseurl}}api-ref/) and the [Github repository](https://github.com/DavidJVitale/jekyll-leaflet).

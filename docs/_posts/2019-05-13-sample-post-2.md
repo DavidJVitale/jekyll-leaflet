@@ -5,7 +5,7 @@ location:
     geojson: '{
         "type": "Feature",
         "properties": {"popupContent": "Yellowstone National Park",
-                       "href": "/samples/sample-post-2/"},
+                       "href": "/tech/jekyll-leaflet/samples/sample-post-2/"},
         "geometry": {
             "type": "Point",
             "coordinates":

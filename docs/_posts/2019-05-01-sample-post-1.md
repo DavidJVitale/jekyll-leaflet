@@ -5,7 +5,7 @@ location:
     geojson: '{
         "type": "Feature",
         "properties": {"popupContent": "Banff National Park",
-                       "href":"/samples/sample-post-1/"},
+                       "href":"/tech/jekyll-leaflet/samples/sample-post-1/"},
         "geometry": {
             "type": "Point",
             "coordinates":

@@ -6,7 +6,7 @@
 
     {%- if page.hide_title_logo_header != true-%}
     <div class="header-icon-title-container">
-        <a href="{{ "/" | relative_url }}"><img class="header-icon" src="/assets/logo.png"></a>
+        <a href="{{ "/" | relative_url }}"><img class="header-icon" src="{{site.baseurl}}assets/logo.png"></a>
         <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
     </div>
     {%- endif -%}
@@ -23,10 +23,10 @@
         </label>
 
         <div class="trigger">
-            <a class="page-link" href="/getting-started/">Getting Started</a>
-            <a class="page-link" href="/samples/">Samples</a>
-            <a class="page-link" href="/api-ref/">API Ref</a>
-            <a class="page-link" href="https://github.com/DavidJVitale/jekyll-leaflet" target="_blank"><img class="github-icon" src="/assets/github-logo.png"></img></a>
+            <a class="page-link" href="{{site.baseurl}}getting-started/">Getting Started</a>
+            <a class="page-link" href="{{site.baseurl}}samples/">Samples</a>
+            <a class="page-link" href="{{site.baseurl}}api-ref/">API Ref</a>
+            <a class="page-link" href="https://github.com/DavidJVitale/jekyll-leaflet" target="_blank"><img class="github-icon" src="{{site.baseurl}}assets/github-logo.png"></img></a>
         </div>
       </nav>
     {%- endif -%}
