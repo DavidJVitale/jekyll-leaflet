@@ -1,5 +1,7 @@
 ## jekyll-leaflet
 
+https://davidjvitale.com/tech/jekyll-leaflet/
+
 Embed leatlet.js maps in Jekyll. As simple as:
 
 ```
@@ -9,3 +11,5 @@ Embed leatlet.js maps in Jekyll. As simple as:
                        "popupContent" : "Hello World from Chicago!"} %}
 {% endleaflet_map %}
 ```
+
+[](./docs/assets/screenshot.png)
