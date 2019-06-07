@@ -1,21 +1,20 @@
 <div id="leaflet-map-%{id}" class="leaflet-map"></div>
 <script>
 (() => {
-    console.log("Hello from my own ruby gem!");
 // Specify configuration variables, setup any elements and styling
     var leafletCdn = "https://unpkg.com/leaflet@1.5.1/dist/";
     var esriLeafletCdn = "https://unpkg.com/esri-leaflet/dist/";
 
     // Get tag input arguments & inside block object list
     var tagInputArg = %{tag_input_arg_json};
-    var leaflet_item_jsons = [%{inside_block_leaflet_objects}];
+    var blockLeafletItems = [%{inside_block_leaflet_items}];
 
     // Override the map div id if specified, apply default CSS
     var defaultMapElId = "leaflet-map-%{id}";
     var defaultMapElStyle = "height:300px; margin:15px";
     var mapEl = document.getElementById(defaultMapElId);
-    if('div_id' in tagInputArg){
-        mapEl.id = tagInputArg['div_id'];
+    if('divId' in tagInputArg){
+        mapEl.id = tagInputArg['divId'];
     }
     var defaultMapCssEl = document.createElement("style");
     defaultMapCssEl.innerHTML = 
@@ -26,18 +25,73 @@
 // assembles the correct JS components based on what the user specified in the 
 // tag input arg, the block section of features, etc. Actually creates the map
 // that is visible on the page
- 
-    function createMap(){
-        console.log("Creating map %{id}..");
-        var map = L.map(mapEl.id).setView([0,0], 3);
-        L.tileLayer.provider("OpenStreetMap.Mapnik").addTo(map);
-        for(var i=0; i<leaflet_item_jsons.length; i++){
-            var leaflet_item = leaflet_item_jsons[i];
-            console.log("Leaflet item #" + i);
-            console.log(leaflet_item);
+
+    function _getCenter(){
+        var defaultCenter = [0,0];
+        if("center" in tagInputArg){
+            return tagInputArg.center;
+        } else {
+            return defaultCenter;
         }
     }
 
+    function _getZoom(){
+        var defaultZoom = 3;
+        if("zoom" in tagInputArg){
+            return tagInputArg.zoom
+        } else {
+            return defaultZoom;
+        }
+    }
+
+    function _getProviderBasemap(){
+        var defaultProviderBasemap = "OpenStreetMap.Mapnik";
+        if("providerBasemap" in tagInputArg){
+            return tagInputArg.providerBasemap;
+        } else {
+            return defaultProviderBasemap;
+        }
+    }
+
+    function _addMarkerToMap(leafletItem, map){
+        var m = leafletItem.value;
+        var result = L.marker([m.latitude, m.longitude]).addTo(map);
+        if('popupContent' in m){
+            result.bindPopup(m.popupContent);
+        }
+    }
+
+    function _processLeafletItem(leafletItem, map){
+        switch(leafletItem.type){
+            case "LeafletMarker":
+                _addMarkerToMap(leafletItem, map);
+                break;
+            default:
+                console.log("Couldn't add item " + leafletItem.id);
+                break;
+        }
+    }
+
+//The actual section that is called that creates a map
+    function createMap(){
+        console.log("Creating map %{id} with these args:");
+        console.log(tagInputArg);
+
+        //Initialize Map with the correct input arguments
+        var map = L.map(mapEl.id).setView(_getCenter(), _getZoom());
+        L.tileLayer.provider(_getProviderBasemap()).addTo(map);
+        if("esriBasemap" in tagInputArg){
+            L.esri.basemapLayer(tagInputArg.esriBasemap).addTo(map);
+        }
+
+        //process each Leaflet Item passed in between the block tag middle
+        for(var i=0; i<blockLeafletItems.length; i++){
+            var leafletItem = blockLeafletItems[i];
+            console.log("Adding leaflet item " + leafletItem.id + ":");
+            console.log(leafletItem);
+            _processLeafletItem(leafletItem, map);
+        }
+    }
 
 // Load the correct JS libraries/CSS by adding to head: 
 // When ready, call createMap() to create the map on the page

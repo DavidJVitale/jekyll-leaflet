@@ -4,7 +4,11 @@ module Jekyll
 
     def initialize(tag_name, input, tokens)
       super
-      @input = input
+      if input.empty?
+          @input = {}
+      else
+          @input = input
+      end
     end
 
     def render(context)
@@ -17,7 +21,7 @@ module Jekyll
         map_parsed_html = map_preparsed_html % {id: SecureRandom.hex,
                                                 leaflet_providers_js_content: leaflet_providers_js_content,
                                                 tag_input_arg_json: @input,
-                                                inside_block_leaflet_objects: text}
+                                                inside_block_leaflet_items: text}
 
         map_parsed_html
     end
