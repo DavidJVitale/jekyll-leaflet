@@ -11,7 +11,7 @@
 
     // Override the map div id if specified, apply default CSS
     var defaultMapElId = "leaflet-map-%{id}";
-    var defaultMapElStyle = "height:300px; margin:15px";
+   var defaultMapElStyle = "height:300px; margin-top:15px; margin-bottom:15px";
     var mapEl = document.getElementById(defaultMapElId);
     if('divId' in tagInputArg){
         mapEl.id = tagInputArg['divId'];
@@ -20,6 +20,8 @@
     defaultMapCssEl.innerHTML = 
         "#" + defaultMapElId + "{" + defaultMapElStyle + "}";
     document.head.appendChild(defaultMapCssEl);
+
+    var newWindowImgSrcBase64 = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAB3RJTUUH4wUVFzAHq2j99AAAAV9JREFUSMdjYKAxYCRHk5ubG9+1a9fm/v//H6cadnb2G/fu3atlIceC379/c3z9+jUEn5q/f/8eYWBgYECxQE5OroqA2Y8ePXq0hJWV9Qc3N/caZB8wMjJKff361QpvEAkKCv4nYMGh9+/f26MLamhoyLx9+3b/nz9/VJCC6MiLFy9sWXCE3xlGRsZvWKQu4DOciYnpCzc396HPnz97weRxWRD/8OHDa4TiAt1wfn5+z79//zoxMDDALWAiN/lhM/zevXtH0NUx0dJwsiwgxXCccUCJ4dzc3DP+//+/gZ2d/duLFy9Is+Djx4+rCbn82rVrrxgYGF6RFUR8fHyZbGxsD7AZLiEhUSAiIrJSUlIyjOw4uHnz5gVHR0d1bC7/8+eP5d+/f8P+/PmjS1Ekr1ix4hcp6ploXVwPfQuwJlMmJiYBLS0tIVIMev36NRvRFnz48OHohw8fhkYQjQKCAAChiL6Pj/LM2QAAAABJRU5ErkJggg==";
 
 // Actual mapping section; Specify a function to be called later that 
 // assembles the correct JS components based on what the user specified in the 
@@ -36,7 +38,7 @@
     }
 
     function _getZoom(){
-        var defaultZoom = 3;
+        var defaultZoom = 1;
         if("zoom" in tagInputArg){
             return tagInputArg.zoom
         } else {
@@ -56,16 +58,49 @@
     function _addMarkerToMap(leafletItem, map){
         var m = leafletItem.value;
         var result = L.marker([m.latitude, m.longitude]).addTo(map);
+        var potentialPopup = "";
         if('popupContent' in m){
-            result.bindPopup(m.popupContent);
+                potentialPopup += m.popUpContent;}
+        if('href' in m){
+            potentialPopup += '<a href="' + m.href + '" target="_blank" >' + 
+                '<img src="' + newWindowImgSrcBase64 + '"></img></a>';}
+        if(potentialPopup){
+            result.bindPopup(potentialPopup);}
+        if(!('center' in tagInputArg)){
+            // If the user didn't specify a center, infer from marker
+            map.panTo(new L.LatLng(m.latitude, m.longitude));
         }
     }
+
+    function _onEachFeature(feature, layer){
+        var potentialPopup = ""
+        if(feature.properties && feature.properties.popupContent){
+            potentialPopup += feature.properties.popupContent;
+        }
+        if(feature.properties && feature.properties.href){
+            potentialPopup += 
+                '<a href="' + feature.properties.href + '" target="_blank">' + 
+                    '<img src="' + newWindowImgSrcBase64 + '"></img></a>';}
+        if(potentialPopup){
+            layer.bindPopup(potentialPopup);
+        }
+    }
+
+    function _addGeoJSONToMap(leafletItem, map){
+        var g = leafletItem.value;
+        L.geoJSON(g, { 
+            onEachFeature: _onEachFeature 
+        }).addTo(map);
+     }
 
     function _processLeafletItem(leafletItem, map){
         switch(leafletItem.type){
             case "LeafletMarker":
                 _addMarkerToMap(leafletItem, map);
                 break;
+             case "LeafletGeoJSON":
+                _addGeoJSONToMap(leafletItem, map);
+                break; 
             default:
                 console.log("Couldn't add item " + leafletItem.id);
                 break;

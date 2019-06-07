@@ -1,6 +1,6 @@
 require 'securerandom'
 module Jekyll
-  class RenderTimeTagBlock < Liquid::Block
+  class LeafletMap < Liquid::Block
 
     def initialize(tag_name, input, tokens)
       super
@@ -29,4 +29,4 @@ module Jekyll
   end
 end
 
-Liquid::Template.register_tag('leaflet_map', Jekyll::RenderTimeTagBlock)
+Liquid::Template.register_tag('leaflet_map', Jekyll::LeafletMap)

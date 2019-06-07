@@ -1,0 +1,71 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@import "minima";
+
+h2 {
+    text-align: center;
+}
+
+header.site-header {
+    position: fixed;
+    height: 3.5em;
+    width: 100%;
+    background: inherit;
+    border-top: 0px solid #424242;
+    border-bottom: 1px solid #e8e8e8;
+    z-index: 1;
+}
+
+main.page-content{
+    margin-top: 3.5em;
+    margin-right: 3.5em;
+    margin-left: 3.5em;
+    padding-bottom: 1em;
+}
+
+.page-content{
+    padding: 15px;
+}
+
+img.header-icon {
+    float: left;
+    height: 3em;
+    width: auto;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+img.github-icon {
+    height: 3em;
+    width: auto; 
+}
+
+.header-icon-title-container:hover{
+    opacity: 0.5;
+}
+
+a.site-title{
+    text-decoration: none;
+    letter-spacing: 0.01em;
+}
+
+.page-link:hover{
+    opacity: 0.5;
+}
+
+a.page-link{
+    text-decoration: none;
+}
+
+/*mobile specific*/
+@media screen and (max-width: 768px){
+    main.page-content{
+        margin-top: 3.5em;
+        margin-right: 1em;
+        margin-left: 1em;
+    }
+}

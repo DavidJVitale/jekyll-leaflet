@@ -1,7 +1,7 @@
 require "securerandom"
 
 module Jekyll
-    class LeafletMarker < Liquid::Tag
+    class LeafletGeoJSON < Liquid::Tag
 
         def initialize(tag_name, input, tokens)
             super
@@ -14,10 +14,11 @@ module Jekyll
 
         def render(context)
             '{id: "' + SecureRandom.hex + '",
-              type: "LeafletMarker",
+              type: "LeafletGeoJSON",
               value: ' + @input + '},'
+
         end
     end
 end
 
-Liquid::Template.register_tag('leaflet_marker', Jekyll::LeafletMarker)
+Liquid::Template.register_tag('leaflet_geojson', Jekyll::LeafletGeoJSON)
