@@ -19,30 +19,27 @@ permalink: /getting-started/
         - jekyll-leaflet
     ``` 
 
-You are now ready to make a map! In any post or page, use the `leaflet_map` Liquid tag block:
+You are now ready to make a map! In any post or page, use the `leaflet_map` Liquid tag block. Use the following code to make a blank map.
 
 {% raw %}
-```
+```liquid
 {% leaflet_map %}
     {}
 {% endleaflet_map %}
 ```
 {% endraw %}
 
-
-This will make a blank map like this:
-
 {% leaflet_map %}
     {}
 {% endleaflet_map %}
 
-This tag can take in 1 positional argument, a JSON object. This object can specify a `[lat,long]` center, the `zoom`, a `providerBasemap`, and more.
+This tag block takes in 1 positional argument, a JSON object. This object can specify a `[lat,long]` center, the `zoom`, a `providerBasemap`, and more.
 
 {% raw %}
-```
-{% leaflet_map {"center" : [63.0694,  -151.0074],
-                "zoom" : 7,
-                "providerBasemap": "OpenTopoMap"} %}
+```liquid
+{% leaflet_map { "center" : [63.0694,  -151.0074],
+                 "zoom" : 7,
+                 "providerBasemap": "OpenTopoMap" } %}
     {}
 {% endleaflet_map %}
 ```
@@ -54,10 +51,10 @@ This tag can take in 1 positional argument, a JSON object. This object can speci
     {}
 {% endleaflet_map %}
 
-You can place any number of "Leafet Items" inbetween the `leaflet_map` tag blocks. Leaflet Items include markers, geometries, geojson, features, popups, etc. Each Leaflet Item tag also takes in a single JSON object positional argument. In this example, we will be drawing 1 marker and 1 Polygon on a map.
+You can place any number of "leafet items" inbetween the `leaflet_map` tag blocks. At minimum, there must at least be an empty object `{}` in between the tag blocks, or else the map won't draw at all. Leaflet items include markers, geometries, geojson, features, popups, etc. Each leaflet item tag also takes in a single JSON object positional argument. In this example, we will be drawing 1 marker and 1 Polygon on a map.
 
 {% raw %}
-```
+```liquid
 {% leaflet_map {"zoom" : 4 } %}
 
     {% leaflet_marker { "latitude" : 48.7596,
@@ -66,7 +63,8 @@ You can place any number of "Leafet Items" inbetween the `leaflet_map` tag block
 
     {% leaflet_geojson {
         "type": "Feature",
-        "properties": { "popupContent": "The whole state of North Dakota" },
+        "properties": { "popupContent": "The whole state of North Dakota",
+                        "href": "https://nd.gov" },
         "geometry": {
             "type": "Polygon",
             "coordinates": [[
@@ -74,9 +72,8 @@ You can place any number of "Leafet Items" inbetween the `leaflet_map` tag block
                 [-97.22,  48.98],
                 [-96.58,  45.94],
                 [-104.03, 45.94],
-                [-104.05, 48.99] ]] } }%}
+                [-104.05, 48.99] ]] } } %}
 
-{% endleaflet_map %}
 ```
 {% endraw %}
 
@@ -89,7 +86,7 @@ You can place any number of "Leafet Items" inbetween the `leaflet_map` tag block
     {% leaflet_geojson {
         "type": "Feature",
         "properties": { "popupContent": "The whole state of North Dakota",
-                        "href": "https://northdakota.gov" },
+                        "href": "https://nd.gov" },
         "geometry": {
             "type": "Polygon",
             "coordinates": [[
@@ -101,25 +98,29 @@ You can place any number of "Leafet Items" inbetween the `leaflet_map` tag block
 
 {% endleaflet_map %}
 
+The true power of `jekyll-leaflet` is unlocked when you connect the previous concepts with programatic control flow with Liquid. Let's say you have some [sample posts](/samples/sample-post-1/) that are tagged with location information in the front matter like this:
+
+```yaml
+layout: post
+title: Sample Post 1
+location:
+    geojson: '{
+        "type": "Feature",
+        "properties": {"popupContent": "Banff National Park"},
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-115.928160, 51.495437]
+        }
+    }'
+permalink: /samples/sample-post-1/
+```
+
+You could cycle through all posts in your site via {% raw %}`{% for post in site.posts %}`{% endraw %} inside of the `leaflet_map` block, assigning each `post.location.geojson` to a {%raw%}`{% leaflet_geojson %}`{%endraw%} leaflet item. __This would ggive you a dynamic, always up-to-date map of your posts and there locations__. We have some sample posts set up, so running the following code will generate such a map:
 
 {% raw %}
-```
-{% leaflet_map {"zoom": 4} %}
-    {%- for post in site.posts -%}
-        {% if post.location.geojson %}
-            {% leaflet_geojson post.location.geojson %}
-        {% endif %}
-    {% endfor %}
-{% endleaflet_map %}
-        
-```
-{% endraw %}
-
-{% for post in site.posts %}
-    {{post.location.geojson}}
-{% endfor %}
-
-{% leaflet_map {"zoom": 4} %}
+```liquid
+{% leaflet_map { "zoom" : 4,
+                 "center" : [50, -114]} %}
     {%- for post in site.posts -%}
         {% assign geojson = post.location.geojson %}
         {% if geojson %}
@@ -127,7 +128,18 @@ You can place any number of "Leafet Items" inbetween the `leaflet_map` tag block
         {% endif %}
     {% endfor %}
 {% endleaflet_map %}
+        
+```
+{% endraw %}
 
-
+{% leaflet_map {"zoom" : 4,
+                "center" : [50, -114]} %}
+    {%- for post in site.posts -%}
+        {% assign geojson = post.location.geojson %}
+        {% if geojson %}
+            {% leaflet_geojson geojson %}
+        {% endif %}
+    {% endfor %}
+{% endleaflet_map %}
 
 Now that you know how to create a map and add items to it, head over to the [Samples](/samples/) section to see some awesome use cases (tagging posts with a location, aggregating certain posts and displaying them on a map, etc.). You can also check out the [API Reference](/api-ref/) and the [Github repository](https://github.com/DavidJVitale/jekyll-leaflet).

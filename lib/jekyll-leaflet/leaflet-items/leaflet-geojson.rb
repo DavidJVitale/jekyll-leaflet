@@ -13,9 +13,13 @@ module Jekyll
         end
 
         def render(context)
+            value = "#{context[@input.strip]}"
+            if value.empty?
+                value = @input
+            end
             '{id: "' + SecureRandom.hex + '",
               type: "LeafletGeoJSON",
-              value: ' + @input + '},'
+              value: ' + value + '},'
 
         end
     end

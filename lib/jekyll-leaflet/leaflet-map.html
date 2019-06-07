@@ -60,7 +60,7 @@
         var result = L.marker([m.latitude, m.longitude]).addTo(map);
         var potentialPopup = "";
         if('popupContent' in m){
-                potentialPopup += m.popUpContent;}
+                potentialPopup += m.popupContent;}
         if('href' in m){
             potentialPopup += '<a href="' + m.href + '" target="_blank" >' + 
                 '<img src="' + newWindowImgSrcBase64 + '"></img></a>';}

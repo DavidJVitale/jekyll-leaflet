@@ -4,7 +4,8 @@ title: Sample Post 1
 location:
     geojson: '{
         "type": "Feature",
-        "properties": {"popupContent": "Banff National Park"},
+        "properties": {"popupContent": "Banff National Park",
+                       "href":"/samples/sample-post-1/"},
         "geometry": {
             "type": "Point",
             "coordinates":
@@ -24,7 +25,8 @@ title: Sample Post 1
 location:
     geojson: '{
         "type": "Feature",
-        "properties": {"popupContent": "Banff National Park"},
+        "properties": {"popupContent": "Banff National Park",
+                       "href":"/samples/sample-post-1/"},
         "geometry": {
             "type": "Point",
             "coordinates":

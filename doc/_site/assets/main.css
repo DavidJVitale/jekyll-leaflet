@@ -504,6 +504,9 @@ table {
   .highlight .il {
     color: #099; }
 
+div.leaflet-map {
+  z-index: 0; }
+
 h2 {
   text-align: center; }
 

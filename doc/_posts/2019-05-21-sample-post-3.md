@@ -4,7 +4,8 @@ title: Sample Post 3
 location:
     geojson: '{
         "type": "Feature",
-        "properties": {"popupContent": "Strathcona Provincial Park"},
+        "properties": {"popupContent": "Strathcona Provincial Park",
+                       "href" : "/samples/sample-post-3/"},
         "geometry": {
             "type": "Point",
             "coordinates":
@@ -24,14 +25,15 @@ title: Sample Post 3
 location:
     geojson: '{
         "type": "Feature",
-        "properties": {"popupContent": "Strathcona Provincial Park"},
+        "properties": {"popupContent": "Strathcona Provincial Park",
+                       "href" : "/samples/sample-post-3/},
         "geometry": {
             "type": "Point",
             "coordinates":
 		[-125.598810, 49.814399]
         }
     }'
-permalink: /sample-posts/sample-post-3/
+permalink: /samples/sample-post-3/
 ---
 ```
 {% endraw %}

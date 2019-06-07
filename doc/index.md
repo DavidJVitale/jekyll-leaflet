@@ -5,8 +5,8 @@ layout: home
 ## Create [leaflet.js](https://leafletjs.com/) maps in [Jekyll](https://jekyllrb.com/). As easy as:
 
 {% raw %}
-```
-{% leaflet_map {"zoom": 9 } %}
+```liquid
+{% leaflet_map { "zoom" : 9 } %}
     {% leaflet_marker { "latitude" : 41.881832,
                         "longitude" : -87.623177,
                         "popupContent" : "Hello World from Chicago!" } %}
@@ -14,10 +14,10 @@ layout: home
 ```
 {% endraw %}
 
-{% leaflet_map {"zoom": 9 } %}
+{% leaflet_map { "zoom": 9 } %}
     {% leaflet_marker { "latitude" : 41.881832,
-                       "longitude" : -87.623177,
-                       "popupContent" : "Hello World from Chicago!"} %}
+                        "longitude" : -87.623177,
+                        "popupContent" : "Hello World from Chicago!"} %}
 {% endleaflet_map %}
 
 <div id = "container" style = "width:100%">

@@ -4,6 +4,10 @@
 
 @import "minima";
 
+div.leaflet-map {
+    z-index: 0;
+}
+
 h2 {
     text-align: center;
 }

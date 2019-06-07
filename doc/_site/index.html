@@ -44,14 +44,14 @@
         <div class="home">
   <h2 id="create-leafletjs-maps-in-jekyll-as-easy-as">Create <a href="https://leafletjs.com/">leaflet.js</a> maps in <a href="https://jekyllrb.com/">Jekyll</a>. As easy as:</h2>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% leaflet_map {"zoom": 9 } %}
-    {% leaflet_marker { "latitude" : 41.881832,
-                        "longitude" : -87.623177,
-                        "popupContent" : "Hello World from Chicago!" } %}
-{% endleaflet_map %}
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">leaflet_map</span><span class="w"> </span>{<span class="w"> </span><span class="s2">"zoom"</span><span class="w"> </span>:<span class="w"> </span><span class="mi">9</span><span class="w"> </span>}<span class="w"> </span><span class="p">%}</span>
+    <span class="p">{%</span><span class="w"> </span><span class="nt">leaflet_marker</span><span class="w"> </span>{<span class="w"> </span><span class="s2">"latitude"</span><span class="w"> </span>:<span class="w"> </span><span class="mf">41.881832</span><span class="p">,</span><span class="err">
+</span><span class="w">                        </span><span class="s2">"longitude"</span><span class="w"> </span>:<span class="w"> </span>-<span class="mf">87.623177</span><span class="p">,</span><span class="err">
+</span><span class="w">                        </span><span class="s2">"popupContent"</span><span class="w"> </span>:<span class="w"> </span><span class="s2">"Hello World from Chicago!"</span><span class="w"> </span>}<span class="w"> </span><span class="p">%}</span>
+<span class="p">{%</span><span class="w"> </span><span class="nt">endleaflet_map</span><span class="w"> </span><span class="p">%}</span>
 </code></pre></div></div>
 
-<div id="leaflet-map-9924bd5543160cc5df5c298581b290f2" class="leaflet-map"></div>
+<div id="leaflet-map-b50d7e6e138fce0aadc17b59983bc22d" class="leaflet-map"></div>
 <script>
 (() => {
 // Specify configuration variables, setup any elements and styling
@@ -59,17 +59,17 @@
     var esriLeafletCdn = "https://unpkg.com/esri-leaflet/dist/";
 
     // Get tag input arguments & inside block object list
-    var tagInputArg = {"zoom": 9 } ;
+    var tagInputArg = { "zoom": 9 } ;
     var blockLeafletItems = [
-    {id: "1998b9ad76972c859d8c9d27970eab26",
+    {id: "47b108ac9953cbc10f9f4727a7525da7",
               type: "LeafletMarker",
               value: { "latitude" : 41.881832,
-                       "longitude" : -87.623177,
-                       "popupContent" : "Hello World from Chicago!"} },
+                        "longitude" : -87.623177,
+                        "popupContent" : "Hello World from Chicago!"} },
 ];
 
     // Override the map div id if specified, apply default CSS
-    var defaultMapElId = "leaflet-map-9924bd5543160cc5df5c298581b290f2";
+    var defaultMapElId = "leaflet-map-b50d7e6e138fce0aadc17b59983bc22d";
    var defaultMapElStyle = "height:300px; margin-top:15px; margin-bottom:15px";
     var mapEl = document.getElementById(defaultMapElId);
     if('divId' in tagInputArg){
@@ -119,7 +119,7 @@
         var result = L.marker([m.latitude, m.longitude]).addTo(map);
         var potentialPopup = "";
         if('popupContent' in m){
-                potentialPopup += m.popUpContent;}
+                potentialPopup += m.popupContent;}
         if('href' in m){
             potentialPopup += '<a href="' + m.href + '" target="_blank" >' + 
                 '<img src="' + newWindowImgSrcBase64 + '"></img></a>';}
@@ -168,7 +168,7 @@
 
 //The actual section that is called that creates a map
     function createMap(){
-        console.log("Creating map 9924bd5543160cc5df5c298581b290f2 with these args:");
+        console.log("Creating map b50d7e6e138fce0aadc17b59983bc22d with these args:");
         console.log(tagInputArg);
 
         //Initialize Map with the correct input arguments
