@@ -5,21 +5,32 @@ author: David Vitale
 tags: ["tests"] 
 ---
 
-{% assign output = '{ "some" : "mutlilevel", "hash": "with", "value": {"href":"bar"} }' | replace_hrefs: "https://davidjvitale.com/tech/jekyll-leaflet" %}
+# Test 1
+
+{% assign output = '{ "some" : "mutlilevel", "hash": "with", "value": {"href":"bar"} }' | override_hrefs: "https://davidjvitale.com/tech/jekyll-leaflet" %}
 {{ output }}
 
 ## SHOULD BE EQUAL TO THIS
 
 {“some”:”mutlilevel”,”hash”:”with”,”value”:{“href”:”https://davidjvitale.com/tech/jekyll-leaflet”}}
 
------
+# Test 2
+
+{% assign output = '{ "some" : "mutlilevel", "hash": "with", "properties": {} }' | override_hrefs: "https://davidjvitale.com/tech/jekyll-leaflet" %}
+{{ output }}
+
+## SHOULD BE EQUAL TO THIS
+
+{“some”:”mutlilevel”,”hash”:”with”,”properties”:{“href”:”https://davidjvitale.com/tech/jekyll-leaflet”}}
+
+## Test 3
 
 {% leaflet_map {"zoom" : 3,
                 "center": [55, -130],
                 "esriBasemap" : "Topographic" } %}
     {%- for post in site.posts -%}
         {% if post.location.geojson %}
-            {% assign geojson = post.location.geojson | replace_hrefs: "https://davidjvitale.com" %}
+            {% assign geojson = post.location.geojson | override_hrefs: "https://davidjvitale.com" %}
             {% capture foo %}{{geojson}}{% endcapture %}
             {% leaflet_geojson foo %}
         {% endif %}

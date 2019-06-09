@@ -8,15 +8,15 @@
 <meta property="og:title" content="Replace Href Filter 1" />
 <meta name="author" content="David Vitale" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="{“some”:”mutlilevel”,”hash”:”with”,”value”:{“href”:”https://davidjvitale.com/tech/jekyll-leaflet”}}" />
-<meta property="og:description" content="{“some”:”mutlilevel”,”hash”:”with”,”value”:{“href”:”https://davidjvitale.com/tech/jekyll-leaflet”}}" />
+<meta name="description" content="Test 1" />
+<meta property="og:description" content="Test 1" />
 <link rel="canonical" href="http://localhost:4000/2000/01/01/should-throw-build-errors.html" />
 <meta property="og:url" content="http://localhost:4000/2000/01/01/should-throw-build-errors.html" />
 <meta property="og:site_name" content="Manual jekyll-leaflet tests" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2000-01-01T00:00:00-08:00" />
 <script type="application/ld+json">
-{"@type":"BlogPosting","url":"http://localhost:4000/2000/01/01/should-throw-build-errors.html","headline":"Replace Href Filter 1","dateModified":"2000-01-01T00:00:00-08:00","datePublished":"2000-01-01T00:00:00-08:00","author":{"@type":"Person","name":"David Vitale"},"description":"{“some”:”mutlilevel”,”hash”:”with”,”value”:{“href”:”https://davidjvitale.com/tech/jekyll-leaflet”}}","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2000/01/01/should-throw-build-errors.html"},"@context":"https://schema.org"}</script>
+{"@type":"BlogPosting","url":"http://localhost:4000/2000/01/01/should-throw-build-errors.html","headline":"Replace Href Filter 1","dateModified":"2000-01-01T00:00:00-08:00","datePublished":"2000-01-01T00:00:00-08:00","author":{"@type":"Person","name":"David Vitale"},"description":"Test 1","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2000/01/01/should-throw-build-errors.html"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Manual jekyll-leaflet tests" /></head>
 <body><header class="site-header" role="banner">
@@ -37,16 +37,25 @@
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
         <div class="test-content">
-    
+    <h1 id="test-1">Test 1</h1>
+
 <p>{“some”:”mutlilevel”,”hash”:”with”,”value”:{“href”:”https://davidjvitale.com/tech/jekyll-leaflet”}}</p>
 
 <h2 id="should-be-equal-to-this">SHOULD BE EQUAL TO THIS</h2>
 
 <p>{“some”:”mutlilevel”,”hash”:”with”,”value”:{“href”:”https://davidjvitale.com/tech/jekyll-leaflet”}}</p>
 
-<hr />
+<h1 id="test-2">Test 2</h1>
 
-<div id="leaflet-map-fcf6dcfad7c4be873da322d3625f0e59" class="leaflet-map"></div>
+<p>{“some”:”mutlilevel”,”hash”:”with”,”properties”:{“href”:”https://davidjvitale.com/tech/jekyll-leaflet”}}</p>
+
+<h2 id="should-be-equal-to-this-1">SHOULD BE EQUAL TO THIS</h2>
+
+<p>{“some”:”mutlilevel”,”hash”:”with”,”properties”:{“href”:”https://davidjvitale.com/tech/jekyll-leaflet”}}</p>
+
+<h2 id="test-3">Test 3</h2>
+
+<div id="leaflet-map-95d46d9e26ae838b4c05dd426622ac84" class="leaflet-map"></div>
 <script>
 (() => {
 // Specify configuration variables, setup any elements and styling
@@ -61,21 +70,21 @@
     
             
             
-            {id: "f1bdc452e415fca34f09c9683d44b1cc",
+            {id: "5d01151a8c70a11769a8fd34a421989c",
               type: "LeafletGeoJSON",
               value: {"type":"Feature","properties":{"popupContent":"Yellowstone National Park","href":"https://davidjvitale.com"},"geometry":{"type":"Point","coordinates":[-110.723183,44.412266]}}},
         
     
             
             
-            {id: "5083f34a14f926a9f1f43413a04e3fca",
+            {id: "715da9b58e4597cfe83a8ec968f7ee94",
               type: "LeafletGeoJSON",
               value: {"type":"Feature","properties":{"popupContent":"Banff National Park","href":"https://davidjvitale.com"},"geometry":{"type":"Point","coordinates":[-115.92816,51.495437]}}},
         
     
             
             
-            {id: "9563f3620c705b18f4f8211c58cbe436",
+            {id: "feb54036ada15785ee2ca9b012b29602",
               type: "LeafletGeoJSON",
               value: {"type":"Feature","properties":{"popupContent":"Strathcona Provincial Park","href":"https://davidjvitale.com"},"geometry":{"type":"Point","coordinates":[-125.59881,49.814399]}}},
         
@@ -83,7 +92,7 @@
 ];
 
     // Override the map div id if specified, apply default CSS
-    var defaultMapElId = "leaflet-map-fcf6dcfad7c4be873da322d3625f0e59";
+    var defaultMapElId = "leaflet-map-95d46d9e26ae838b4c05dd426622ac84";
    var defaultMapElStyle = "height:300px; margin-top:15px; margin-bottom:15px";
     var mapEl = document.getElementById(defaultMapElId);
     if('divId' in tagInputArg){
@@ -183,7 +192,7 @@
 
 //The actual section that is called that creates a map
     function createMap(){
-        console.log("Creating map fcf6dcfad7c4be873da322d3625f0e59 with these args:");
+        console.log("Creating map 95d46d9e26ae838b4c05dd426622ac84 with these args:");
         console.log(tagInputArg);
 
         //Initialize Map with the correct input arguments
