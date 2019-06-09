@@ -26,14 +26,20 @@ class LeafletMap < Liquid::Block
         leaflet_providers_js_content = File.read(
             File.expand_path("./leaflet-providers.js", File.dirname(__FILE__)))
 
-        map_preparsed_html = File.read(
+        map_js = File.read(
+            File.expand_path("./leaflet-map.js", File.dirname(__FILE__)))
+        map_html = File.read(
             File.expand_path("./leaflet-map.html", File.dirname(__FILE__)))
-        map_parsed_html = map_preparsed_html % {id: SecureRandom.hex,
-                                                leaflet_providers_js_content: leaflet_providers_js_content,
-                                                tag_input_arg_json: @input,
-                                                inside_block_leaflet_items: text}
 
-        map_parsed_html
+        id = SecureRandom.hex
+        map_js = map_js % {id: id,
+                           leaflet_providers_js_content: leaflet_providers_js_content,
+                           tag_input_arg_json: @input,
+                           inside_block_leaflet_items: text}
+        map_html = map_html % {id: id,
+                               leaflet_map_js_content: map_js}
+
+        map_html
     end
 
     end
