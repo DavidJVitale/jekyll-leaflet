@@ -9,11 +9,13 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Create leaflet.js maps in Jekyll" />
 <meta property="og:description" content="Create leaflet.js maps in Jekyll" />
+<link rel="canonical" href="http://localhost:4000/tech/jekyll-leaflet/" />
+<meta property="og:url" content="http://localhost:4000/tech/jekyll-leaflet/" />
 <meta property="og:site_name" content="jekyll-leaflet" />
 <script type="application/ld+json">
-{"url":"/tech/jekyll-leaflet/","name":"jekyll-leaflet","headline":"jekyll-leaflet","description":"Create leaflet.js maps in Jekyll","@type":"WebSite","@context":"https://schema.org"}</script>
+{"@type":"WebSite","url":"http://localhost:4000/tech/jekyll-leaflet/","headline":"jekyll-leaflet","name":"jekyll-leaflet","description":"Create leaflet.js maps in Jekyll","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/tech/jekyll-leaflet/assets/main.css"><link type="application/atom+xml" rel="alternate" href="/tech/jekyll-leaflet/feed.xml" title="jekyll-leaflet" /></head>
+<link rel="stylesheet" href="/tech/jekyll-leaflet/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/tech/jekyll-leaflet/feed.xml" title="jekyll-leaflet" /></head>
 <body><header class="site-header" role="banner">
 
   <div class="wrapper"><div class="header-icon-title-container">
@@ -49,7 +51,7 @@
 <span class="p">{%</span><span class="w"> </span><span class="nt">endleaflet_map</span><span class="w"> </span><span class="p">%}</span>
 </code></pre></div></div>
 
-<div id="leaflet-map-ce18c8fbb8f7bf1cbdfd9bcd5e5786cb" class="leaflet-map"></div>
+<div id="leaflet-map-c81bd4143da51ff7f614ebea6a1951f2" class="leaflet-map"></div>
 <script>
 (() => {
 // Specify configuration variables, setup any elements and styling
@@ -59,7 +61,7 @@
     // Get tag input arguments & inside block object list
     var tagInputArg = { "zoom": 9 } ;
     var blockLeafletItems = [
-    {id: "f6aae457a92a2f4bcea1088dc6532ba2",
+    {id: "985777bd89d74891eb8cca50c34c8098",
               type: "LeafletMarker",
               value: { "latitude" : 41.881832,
                         "longitude" : -87.623177,
@@ -67,7 +69,7 @@
 ];
 
     // Override the map div id if specified, apply default CSS
-    var defaultMapElId = "leaflet-map-ce18c8fbb8f7bf1cbdfd9bcd5e5786cb";
+    var defaultMapElId = "leaflet-map-c81bd4143da51ff7f614ebea6a1951f2";
    var defaultMapElStyle = "height:300px; margin-top:15px; margin-bottom:15px";
     var mapEl = document.getElementById(defaultMapElId);
     if('divId' in tagInputArg){
@@ -111,6 +113,8 @@
             return defaultProviderBasemap;
         }
     }
+
+    console.log("Testing.......");
 
     function _addMarkerToMap(leafletItem, map){
         var m = leafletItem.value;
@@ -166,7 +170,7 @@
 
 //The actual section that is called that creates a map
     function createMap(){
-        console.log("Creating map ce18c8fbb8f7bf1cbdfd9bcd5e5786cb with these args:");
+        console.log("Creating map c81bd4143da51ff7f614ebea6a1951f2 with these args:");
         console.log(tagInputArg);
 
         //Initialize Map with the correct input arguments
