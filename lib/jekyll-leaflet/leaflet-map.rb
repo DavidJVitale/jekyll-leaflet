@@ -31,6 +31,7 @@ class LeafletMap < Liquid::Block
         map_html = File.read(
             File.expand_path("./leaflet-map.html", File.dirname(__FILE__)))
 
+        @input = parse_liquid_output_in(@input, context)
         id = SecureRandom.hex
         map_js = map_js % {id: id,
                            leaflet_providers_js_content: leaflet_providers_js_content,

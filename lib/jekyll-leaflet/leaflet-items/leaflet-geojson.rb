@@ -13,14 +13,10 @@ module Jekyll
         end
 
         def render(context)
-            value = "#{context[@input.strip]}"
-            if value.empty?
-                value = @input
-            end
+            value = parse_liquid_output_in(@input, context)
             '{id: "' + SecureRandom.hex + '",
               type: "LeafletGeoJSON",
               value: ' + value + '},'
-
         end
     end
 end

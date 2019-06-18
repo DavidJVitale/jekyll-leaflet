@@ -122,17 +122,18 @@ You could cycle through all posts in your site via {% raw %}`{% for post in site
 
 {% raw %}
 ```liquid
-{% leaflet_map { "zoom" : 4,
-                 "center" : [50, -114],
-                 "providerBasemap" : "OpenStreetMap.HOT"} %}
+{% leaflet_map {"zoom" : 4,
+                "center" : [50, -114],
+                "providerBasemap": "OpenStreetMap.HOT"} %}
     {%- for post in site.posts -%}
-        {% assign geojson = post.location.geojson %}
-        {% if geojson %}
-            {% leaflet_geojson geojson %}
+        {% if post.location.geojson %}
+            {% leaflet_geojson {{post.location.geojson}} %}
+        {% elsif post.location.latitude and post.location.longitude %}
+            {% leaflet_marker { "latitude" : {{post.location.latitude}},
+                                "longitude" : {{post.location.longitude}} } %}
         {% endif %}
     {% endfor %}
 {% endleaflet_map %}
-        
 ```
 {% endraw %}
 
@@ -140,9 +141,11 @@ You could cycle through all posts in your site via {% raw %}`{% for post in site
                 "center" : [50, -114],
                 "providerBasemap": "OpenStreetMap.HOT"} %}
     {%- for post in site.posts -%}
-        {% assign geojson = post.location.geojson %}
-        {% if geojson %}
-            {% leaflet_geojson geojson %}
+        {% if post.location.geojson %}
+            {% leaflet_geojson {{post.location.geojson}} %}
+        {% elsif post.location.latitude and post.location.longitude %}
+            {% leaflet_marker { "latitude" : {{post.location.latitude}},
+                                "longitude" : {{post.location.longitude}} } %}
         {% endif %}
     {% endfor %}
 {% endleaflet_map %}

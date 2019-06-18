@@ -1,4 +1,5 @@
 require "securerandom"
+require_relative("../_parse-liquid.rb")
 
 module Jekyll
     class LeafletMarker < Liquid::Tag
@@ -13,6 +14,7 @@ module Jekyll
         end
 
         def render(context)
+            @input = parse_liquid_output_in(@input, context)
             '{id: "' + SecureRandom.hex + '",
               type: "LeafletMarker",
               value: ' + @input + '},'
