@@ -101,6 +101,31 @@ You can place any number of "leafet items" inbetween the `leaflet_map` tag block
 
 {% endleaflet_map %}
 
+All above examples have shown you passing in a JSON object as the first positional argument of a `{% leaflet_geojson %}` tag. When you specify a String as the first positional argument, the argument will be read as a URL, and the data will be fetched from that URL.
+
+{% raw %}
+```liquid
+
+{% leaflet_map {"zoom" : 13 } %}
+    {% leaflet_marker {"latitude" : 34.296184,
+                       "longitude" : -117.211329,
+                       "popupContent": "Arrowhead Pinacles Trail"} %} 
+    {% leaflet_geojson "/tech/jekyll-leaflet/assets/hike.geojson" %}
+
+{% endleaflet_map %}
+
+```
+{% endraw %}
+
+{% leaflet_map {"zoom" : 13 } %}
+    {% leaflet_marker {"latitude" : 34.296184,
+                       "longitude" : -117.211329,
+                       "popupContent": "Arrowhead Pinacles Trail"} %} 
+    {% leaflet_geojson "/tech/jekyll-leaflet/assets/hike.geojson" %}
+
+{% endleaflet_map %}
+
+
 The true power of `jekyll-leaflet` is unlocked when you connect the previous concepts with programatic control flow with Liquid. Let's say you have some [sample posts]({{site.baseurl}}samples/sample-post-1/) that are tagged with location information in the front matter like this:
 
 ```yaml
@@ -152,3 +177,4 @@ You could cycle through all posts in your site via {% raw %}`{% for post in site
 
 This documentation that you are reading is [generated in Jekyll](https://github.com/DavidJVitale/jekyll-leaflet/tree/master/docs) using the `jekyll-leaflet` plugin. You can clone the repository, build the site locally, and modify everything you are reading.
 
+I use this plugin for my personal travel blog, located at [https://davidjvitale.com/blog/travel/](https://davidjvitale.com/blog/travel/). You can see how I use Liquid to put all my travel posts onto one map, while overriding the URL to link to each individual post.

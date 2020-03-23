@@ -19,14 +19,5 @@ layout: home
                         "popupContent" : "Hello World from Chicago!" } %}
 {% endleaflet_map %}
 
-<div id = "container" style = "width:100%">
-    <div id ="left" style = "float:left; width: 25%;">
-        <h3 style="text-align:center"> <a href="{{site.baseurl}}getting-started/">Getting Started</a></h3>
-    </div>
-    <div id = "middle" style = "float:left; width: 50%;">
-        <h3 style="text-align:center"> <a href="{{site.baseurl}}samples/">Samples</a></h3>
-    </div>
-    <div id = "right" style = "float:left; width: 25%;">
-        <h3 style="text-align:center"> <a href="{{site.baseurl}}api-ref/">API Ref</a></h3>
-    </div>
-</div>
+<h2><a href="{{site.baseurl}}getting-started/">Getting Started</a></h2>
+
