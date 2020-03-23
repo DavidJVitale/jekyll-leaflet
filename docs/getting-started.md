@@ -9,7 +9,7 @@ permalink: /getting-started/
 2. Add the following to your site's `Gemfile` file:
 
     ```
-    gem "jekyll-leaflet", git: "https://github.com/DavidJVitale/jekyll-leaflet"
+    gem "jekyll-leaflet"
     ```
 
 3. Add the following to your site's `_config.yml` file:
