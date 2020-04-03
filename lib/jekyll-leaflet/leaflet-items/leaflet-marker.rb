@@ -14,10 +14,10 @@ module Jekyll
         end
 
         def render(context)
-            @input = parse_liquid_output_in(@input, context)
+            value = parse_liquid_output_in(@input, context)
             '{id: "' + SecureRandom.hex + '",
               type: "LeafletMarker",
-              value: ' + @input + '},'
+              value: ' + value + '},'
         end
     end
 end
