@@ -15,7 +15,7 @@ permalink: /getting-started/
 3. Add the following to your site's `_config.yml` file:
 
     ```
-    gems:
+    plugins:
         - jekyll-leaflet
     ``` 
 
