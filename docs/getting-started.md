@@ -51,7 +51,7 @@ This tag block takes in 1 positional argument, a JSON object. This object can sp
     {}
 {% endleaflet_map %}
 
-You can place any number of "leafet items" inbetween the `leaflet_map` tag blocks. At minimum, there must at least be an empty object `{}` in between the tag blocks, or else the map won't draw at all. Leaflet items include markers, geometries, geojson, features, popups, etc. Each leaflet item tag also takes in a single JSON object positional argument. In this example, we will be drawing 1 marker and 1 Polygon on a map.
+You can place any number of "leafet items" inbetween the `leaflet_map` tag blocks. At minimum, there must at least be an empty object `{}` in between the tag blocks, or else the map won't draw at all. Leaflet items include markers, geometries, geojson, features, popups, etc. Each leaflet item tag also takes in a single JSON object positional argument. If an `id` key is present inside the `properties` object, its content will be used as the id of the  ̀<path>` tag which represent the geojson element on the map. In this example, we will be drawing 1 marker and 1 Polygon on a map.
 
 {% raw %}
 ```liquid
@@ -65,7 +65,8 @@ You can place any number of "leafet items" inbetween the `leaflet_map` tag block
     {% leaflet_geojson {
         "type": "Feature",
         "properties": { "popupContent": "The whole state of North Dakota",
-                        "href": "https://nd.gov" },
+                        "href": "https://nd.gov",
+                        "id": "area-north-dakota" },
         "geometry": {
             "type": "Polygon",
             "coordinates": [[
@@ -89,7 +90,8 @@ You can place any number of "leafet items" inbetween the `leaflet_map` tag block
     {% leaflet_geojson {
         "type": "Feature",
         "properties": { "popupContent": "The whole state of North Dakota",
-                        "href": "https://nd.gov" },
+                        "href": "https://nd.gov",
+                        "id": "area-north-dakota" },
         "geometry": {
             "type": "Polygon",
             "coordinates": [[
